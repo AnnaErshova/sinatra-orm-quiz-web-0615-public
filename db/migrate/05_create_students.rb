@@ -1,4 +1,5 @@
 class CreateStudents < ActiveRecord::Migration
+
   def change
     create_table :students do |t|
       t.string :firstname
@@ -6,4 +7,5 @@ class CreateStudents < ActiveRecord::Migration
       t.string :birth_date
     end
   end
+  
 end

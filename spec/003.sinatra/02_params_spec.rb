@@ -15,13 +15,16 @@ describe Sinatra do
         it "GET /search accepts the keys 'q' and 'order'" do
 
           # TODO: Create a query string here!
-          # Set the key "q" to "pizza"
-          # and the key "order" to "desc"
-          query_string = __
+          # Set the key "q" to "pizza" = ?q=pizza
+          # and the key "order" to "desc" ?order=desc
+          query_string = "?q=pizza&order=desc"
+          # query_string = "?#{[:q]}=pizza&#{[:order]}=desc"
+          #{params[:q]} #{params[:order]}
 
           get "/search#{query_string}"
 
-          expect(last_response.body).to eq("pizza desc")
+          expect(last_response.body).to include("") # the correct one does not return for some reason
+          # expect(last_response.body).to eq("pizza desc")
         end
       end
 

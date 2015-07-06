@@ -11,7 +11,6 @@ describe "ORMs" do
   #
   # You'll be building your ORM into the crowd_fundr_campaign.rb unit.
   # So you'll have to edit that file to make these tests pass.
-
   context "a CrowdFundrCampaign model" do
     before do
       @path = File.dirname(__FILE__)
@@ -28,8 +27,7 @@ describe "ORMs" do
 
     describe "create" do
       it "should create a record for CrowdFundrCampaigns" do
-        # TODO: Your solution goes here
-
+        CrowdFundrCampaign.new.save # creating & saving new instance of the class
         expect(CrowdFundrCampaign.all.count).to eq(1)
       end
     end
@@ -44,14 +42,13 @@ describe "ORMs" do
           starting_date: Time.new(2013, 6, 15),
           finishing_date: Time.new(2013, 8, 30)
         )
-
-        # TODO: Get these to pass
-        expect(campaign.__).to eq("Soylent")
-        expect(campaign.__).to eq("Free your body.")
-        expect(campaign.__).to eq(10000000)
-        expect(campaign.__).to eq(500000)
-        expect(campaign.__).to eq(Time.new(2013, 6, 15))
-        expect(campaign.__).to eq(Time.new(2013, 8, 30))
+        # ... just copy-pasting basically?
+        expect(campaign.name).to eq("Soylent")
+        expect(campaign.tagline).to eq("Free your body.")
+        expect(campaign.total_funding).to eq(10000000)
+        expect(campaign.funding_goal).to eq(500000)
+        expect(campaign.starting_date).to eq(Time.new(2013, 6, 15))
+        expect(campaign.finishing_date).to eq(Time.new(2013, 8, 30))
       end
     end
 
@@ -63,9 +60,9 @@ describe "ORMs" do
       it "changes the name of the campaign" do
         campaign_name = "Sham-Wow"
         campaign = CrowdFundrCampaign.create(name: campaign_name)
-
         # Edit the campaign object and save it
-        # TODO: Your solution goes here
+        campaign.name = "new_campaign_name"
+        campaign.save
 
         expect(CrowdFundrCampaign.first.name).to_not eq(campaign_name)
       end
@@ -74,10 +71,8 @@ describe "ORMs" do
     describe "destroy" do
       it "removes a record from the DB" do
         campaign = CrowdFundrCampaign.create(name: 'Slap Chop')
-
+        campaign.destroy
         # Delete the campaign record from the database
-        # TODO: Your solution goes here
-
         expect(CrowdFundrCampaign.all.count).to eq(0)
       end
     end

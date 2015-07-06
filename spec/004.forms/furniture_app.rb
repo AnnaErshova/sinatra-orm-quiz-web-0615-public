@@ -6,7 +6,6 @@ class FurnitureApp < Sinatra::Base
   post '/chair' do
     name = params[:name]
     description = params[:description]
-
     "#{name.upcase} #{description.upcase}"
   end
 
@@ -24,7 +23,6 @@ class FurnitureApp < Sinatra::Base
 
   post '/table' do
     table = params[:table]
-
     "#{table[:name].upcase} #{table[:wood].upcase} #{table[:price]}"
   end
 end
